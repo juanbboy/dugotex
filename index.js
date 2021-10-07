@@ -2,6 +2,9 @@ let express = require("express");
 const app = express();
 bodyParser = require("body-parser");
 mongoose = require("mongoose")
+cors = require("cors");
+
+app.use(cors());
 
 const rutas = require("./Rutas/rutas");
 
@@ -37,5 +40,5 @@ const server = app.listen(port, () => {
 });
 
 app.use((req, res, next) => {
-    //next(createError(404));
+    //next(createErro
   });
