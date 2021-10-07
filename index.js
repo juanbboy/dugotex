@@ -1,6 +1,9 @@
 let express = require("express");
 const app = express();
 bodyParser = require("body-parser");
+mongoose = require("mongoose")
+
+const rutas = require("./Rutas/rutas");
 
 app.use(bodyParser.json());
 app.use(
@@ -8,6 +11,17 @@ app.use(
     extended: false,
   })
 );
+
+const user='minticDB';
+  const password='minticDB';
+  const dataB='vuecrudmevn'
+  const uri=`mongodb+srv://${user}:${password}@cluster0.y3w80.mongodb.net/${dataB}?retryWrites=true&w=majority`;
+
+mongoose.connect(uri,{useNewUrlParser:true, useUnifiedTopology: true})
+.then(db => console.log('Base de datos conectada'))
+.catch(err => console.error(err));  
+
+app.use("/api", rutas);
 
 app.get("/", ( req, res)=> {
     const datos={
@@ -19,9 +33,9 @@ app.get("/", ( req, res)=> {
 
 const port = process.env.PORT || 4001;
 const server = app.listen(port, () => {
-  console.log("Connected to port " + port);
+  console.log("Puerto escuchando " + port);
 });
 
 app.use((req, res, next) => {
-    next(createError(404));
+    //next(createError(404));
   });
