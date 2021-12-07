@@ -15,23 +15,23 @@ app.use(
   })
 );
 
-const user='minticDB';
-  const password='minticDB';
-  const dataB='vuecrudmevn'
-  const uri=`mongodb+srv://${user}:${password}@cluster0.y3w80.mongodb.net/${dataB}?retryWrites=true&w=majority`;
+const user = 'juanbboy';
+const password = 'Alejitah.1';
+const db = 'DataBase';
+const url = `mongodb+srv://${user}:${password}@cluster0.whlgo.mongodb.net/${db}?retryWrites=true&w=majority`
 
-mongoose.connect(uri,{useNewUrlParser:true, useUnifiedTopology: true})
-.then(db => console.log('Base de datos conectada'))
-.catch(err => console.error(err));  
+mongoose.connect(url, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(db => console.log('Base de datos conectada'))
+  .catch(err => console.error(err));
 
 app.use("/api", rutas);
 
-app.get("/", ( req, res)=> {
-    const datos={
-        msg: 'hola mundo',
-        status: false
-    }
-    res.send ( datos)
+app.get("/", (req, res) => {
+  const datos = {
+    msg: 'hola mundo',
+    status: false
+  }
+  res.send(datos)
 })
 
 const port = process.env.PORT || 4001;
@@ -40,5 +40,5 @@ const server = app.listen(port, () => {
 });
 
 app.use((req, res, next) => {
-    //next(createErro
-  });
+  //next(createErro
+});
